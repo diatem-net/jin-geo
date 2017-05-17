@@ -23,92 +23,92 @@ class CustomGoogleMapper
   /**
    * @var integer  Niveau de zoom
    */
-  private $zoom;
+  protected $zoom;
 
   /**
    * @var string  Chemin de l'image à mapper
    */
-  private $imagePath;
+  protected $imagePath;
 
   /**
    * @var GeoZone  Représentation géographique des coordonnées de l'image
    */
-  private $imageGeoZone;
+  protected $imageGeoZone;
 
   /**
    * @var GeoZone  Représentation géographique de la zone valide. (le reste devant être masqué). Si Null pas  de masquage
    */
-  private $valideGeoZone;
+  protected $valideGeoZone;
 
   /**
    * @var integer  Couleur de masquage (en dehors de la zone valide). Composante rouge.
    */
-  private $masquageColorR;
+  protected $masquageColorR;
 
   /**
    * @var integer  Couleur de masquage (en dehors de la zone valide). Composante verte.
    */
-  private $masquageColorG;
+  protected $masquageColorG;
 
   /**
    * @var integer  Couleur de masquage (en dehors de la zone valide). Composante bleue.
    */
-  private $masquageColorB;
+  protected $masquageColorB;
 
   /**
    * @var GeoZone  Représentation géographique des coordonnées des tuiles recouvertes par l'image au niveau de zoom spécifié
    */
-  private $tilesGeoZone;
+  protected $tilesGeoZone;
 
   /**
    * @var array  Tuile SudOuest {'x' => integer, 'y' => integer}
    */
-  private $soTile;
+  protected $soTile;
 
   /**
    * @var array   integer}}
    */
-  private $soTileInfo;
+  protected $soTileInfo;
 
   /**
    * @var array  Tuile NordEst {'x' => integer, 'y' => integer}
    */
-  private $neTile;
+  protected $neTile;
 
   /**
    * @var array  Infos tuile NoedEst {'min' => {'lat' => integer, 'long' => integer}, 'max' => {'lat' => integer, 'long' => integer}}
    */
-  private $neTileInfo;
+  protected $neTileInfo;
 
   /**
    * @var integer  Largeur de l'image de sortie avant découpe
    */
-  private $outputWidth;
+  protected $outputWidth;
 
   /**
    * @var integer  Hauteur de l'image de sortie avant découpe
    */
-  private $outputHeight;
+  protected $outputHeight;
 
   /**
    * @var integer  Nombre de tuiles en largeur
    */
-  private $nbTilesX;
+  protected $nbTilesX;
 
   /**
    * @var integer  Nombre de tuiles en hauteur
    */
-  private $nbTilesY;
+  protected $nbTilesY;
 
   /**
    * @var type  Taille h/w de la tuile de sortie en pixel (256 pour GoogleMap)
    */
-  private $tileZize = 256;
+  protected $tileZize = 256;
 
   /**
    * @var \Jin2\external\gmap\GeoProjectionMercator  Objet GeoProjectionMercator
    */
-  private static $gpm;
+  protected static $gpm;
 
   /**
    * Constructeur
@@ -154,7 +154,7 @@ class CustomGoogleMapper
   /**
    * Calcule les emplacements des tuiles limites SUDOUEST et NORDEST
    */
-  private function calculateLimitTiles()
+  protected function calculateLimitTiles()
   {
     $so = $this->imageGeoZone->getSudOuestPoint();
     $this->soTile = self::$gpm->LatLonToTile($so->getLatitude(), $so->getLongitude(), $this->zoom);
@@ -176,7 +176,7 @@ class CustomGoogleMapper
   /**
    * Calcule la taille de l'image de sortie avant découpe
    */
-  private function calculateOutputSize()
+  protected function calculateOutputSize()
   {
     $this->nbTilesX = (max($this->neTile['x'], $this->soTile['x']) - min($this->neTile['x'], $this->soTile['x']) + 1);
     $this->nbTilesY = (max($this->neTile['y'], $this->soTile['y']) - min($this->neTile['y'], $this->soTile['y']) + 1);

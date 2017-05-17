@@ -17,14 +17,14 @@ class GeoPoint
    *
    * @var float
    */
-  private $lat;
+  protected $lat;
 
   /**
    * Longitude
    *
    * @var float
    */
-  private $long;
+  protected $long;
 
   /**
    * Constructeur

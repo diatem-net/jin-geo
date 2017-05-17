@@ -17,28 +17,28 @@ class GeoZone
    *
    * @var GeoPoint
    */
-  private $no;
+  protected $no;
 
   /**
    * Point NE de la zone
    *
    * @var GeoPoint
    */
-  private $ne;
+  protected $ne;
 
   /**
    * Point SO de la zone
    *
    * @var GeoPoint
    */
-  private $so;
+  protected $so;
 
   /**
    * Point SE de la zone
    *
    * @var GeoPoint
    */
-  private $se;
+  protected $se;
 
   /**
    * Constructeur
